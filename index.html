@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>WaweMC - Oficjalna Strona</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        :root {
+            --accent: #4da6ff;
+            --accent-soft: #4da6ff33;
+            --discord: #5865F2;
+            --discord-dark: #4752C4;
+            --text-dark: #111;
+            --text-muted: #666;
+            --bg-light: #ffffff;
+            --bg-grey: #f5f5f5;
+            --transition: 0.25s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Inter", sans-serif;
+        }
+
+        body {
+            background: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1250px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav {
+            height: 80px;
+            border-bottom: 1px solid #e5e5e5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .nav-inner {
+            width: 100%;
+            max-width: 1250px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            font-size: 22px;
+        }
+
+        .nav-left img {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-4px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .nav-center {
+            display: flex;
+            gap: 26px;
+            font-size: 15px;
+        }
+
+        .nav-center a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-center a:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .nav-right {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .hero-top {
+            padding: 70px 0 80px 0;
+            background: #ffffff;
+        }
+
+        .hero-top-inner {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-main-title {
+            font-size: 52px;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .hero-main-title span {
+            color: var(--accent);
+        }
+
+        .hero-sub {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background: #2f8be0;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px #4da6ff55;
+        }
+
+        .btn-secondary {
+            background: #111;
+            color: #ffffff;
+        }
+
+        .btn-secondary:hover {
+            background: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px #00000055;
+        }
+
+        .hero-ip-copy {
+            margin-top: 8px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .hero-ip-copy button {
+            margin-left: 8px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            border: none;
+            background: #f0f0f0;
+            cursor: pointer;
+            font-size: 13px;
+            transition: var(--transition);
+        }
+
+        .hero-ip-copy button:hover {
+            background: #e0e0e0;
+            transform: translateY(-2px);
+        }
+
+        .hero-online {
+            margin-top: 10px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .hero-right-img {
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-right-img img {
+            width: 360px;
+            image-rendering: pixelated;
+            filter: drop-shadow(0 0 20px #00000044);
+            transition: var(--transition);
+        }
+
+        .hero-right-img img:hover {
+            transform: scale(1.05);
+        }
+
+        .section-discord-modes {
+            padding: 70px 0;
+            background: var(--bg-grey);
+        }
+
+        .discord-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 30px 26px;
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+            transition: var(--transition);
+        }
+
+        .discord-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px #00000022;
+        }
+
+        .discord-left {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .discord-left img {
+            width: 220px;
+            image-rendering: pixelated;
+            filter: drop-shadow(0 0 18px #00000055);
+            transition: var(--transition);
+        }
+
+        .discord-left img:hover {
+            transform: scale(1.05);
+        }
+
+        .discord-right h2 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .discord-right p {
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .btn-discord {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 12px;
+            background: var(--discord);
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn-discord:hover {
+            background: var(--discord-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px #5865f255;
+        }
+
+        .modes-title {
+            text-align: center;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .modes-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .mode-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 22px 18px;
+            text-align: center;
+            box-shadow: 0 0 18px #00000022;
+            transition: var(--transition);
+        }
+
+        .mode-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px #00000033;
+        }
+
+        .mode-card img {
+            width: 100px;
+            margin-bottom: 12px;
+            transition: var(--transition);
+        }
+
+        .mode-card img:hover {
+            transform: scale(1.1);
+        }
+
+        .mode-card h3 {
+            font-size: 18px;
+            margin-bottom: 6px;
+        }
+
+        .mode-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+        }
+
+        .mode-btn {
+            padding: 9px 18px;
+            border-radius: 10px;
+            background: var(--accent);
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .mode-btn:hover {
+            background: #2f8be0;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px #4da6ff55;
+        }
+
+        .voucher-section {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+
+        .voucher-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 40px;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .voucher-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px #00000022;
+        }
+
+        .voucher-left {
+            text-align: center;
+        }
+
+        .voucher-left img {
+            width: 260px;
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+
+        .voucher-left img:hover {
+            transform: scale(1.05);
+        }
+
+        .voucher-right h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .voucher-right input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid #ddd;
+            margin-top: 20px;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .voucher-right input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 10px #4da6ff55;
+            outline: none;
+        }
+
+        .voucher-right button {
+            margin-top: 20px;
+            padding: 14px 28px;
+            background: #111;
+            color: #ffffff;
+            border-radius: 12px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .voucher-right button:hover {
+            background: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px #00000055;
+        }
+
+        .footer {
+            background: #ffffff;
+            padding: 70px 0 40px 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+        }
+
+        .footer-col h4 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 14px;
+            transition: 0.25s ease;
+        }
+
+        .footer-col h4:hover {
+            color: #4da6ff;
+            transform: translateX(4px);
+        }
+
+        .footer-col a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            color: #666;
+            margin: 6px 0;
+            text-decoration: none;
+            transition: 0.25s ease;
+        }
+
+        .footer-col a:hover {
+            color: #4da6ff;
+            transform: translateX(6px);
+        }
+
+        .social-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .icon-fb {
+            background: #1877f2;
+        }
+
+        .icon-ig {
+            background: radial-gradient(circle at 30% 30%, #fdf497 0, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+        }
+
+        .icon-dc {
+            background: #5865F2;
+        }
+
+        .icon-tt {
+            background: #000000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .icon-tt::before {
+            content: "";
+            position: absolute;
+            width: 140%;
+            height: 140%;
+            background: linear-gradient(135deg, #25f4ee, #fe2c55);
+            opacity: 0.7;
+            transform: translate(-10%, -10%) rotate(25deg);
+            mix-blend-mode: screen;
+        }
+
+        .icon-tt span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-ip-box {
+            margin-top: 10px;
+            padding: 18px 22px;
+            border-radius: 16px;
+            background: #f3f3f3;
+            border: 1px solid #e0e0e0;
+            font-size: 22px;
+            font-weight: 700;
+            text-align: center;
+            letter-spacing: 1px;
+            transition: 0.25s ease;
+        }
+
+        .footer-ip-box:hover {
+            background: #e9f4ff;
+            border-color: #4da6ff;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px #4da6ff33;
+        }
+
+        .footer-copy-btn {
+            margin-top: 16px;
+            width: 100%;
+            padding: 16px 0;
+            background: #4da6ff;
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .footer-copy-btn:hover {
+            background: #2f8be0;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px #4da6ff55;
+        }
+
+        .footer-bottom {
+            margin-top: 60px;
+            text-align: center;
+            font-size: 15px;
+            color: #777;
+            transition: 0.25s ease;
+        }
+
+        .footer-bottom:hover {
+            color: #4da6ff;
+        }
+
+        @media (max-width: 1000px) {
+            .hero-top-inner,
+            .discord-card,
+            .voucher-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .modes-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .modes-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="nav">
+    <div class="nav-inner">
+        <div class="nav-left">
+            <img src="https://cdn.discordapp.com/attachments/1448672744773521460/1488922009563041912/image.png?ex=69ce8a2d&is=69cd38ad&hm=b534835e284b853fb1025e56c65f62910bf19c2e28e89b1ed33c130230d4d173&" alt="WaweMC logo">
+            WaweMC
+        </div>
+        <nav class="nav-center">
+            <a href="#">STRONA GŁÓWNA</a>
+            <a href="#">SKLEP</a>
+            <a href="#">VOUCHER</a>
+            <a href="https://discord.gg/Z3gjRNSD" target="_blank">DISCORD</a>
+            <a href="#">WAWE.MC</a>
+        </nav>
+        <div class="nav-right">
+            Graczy online: 0
+        </div>
+    </div>
+</header>
+
+<section class="hero-top">
+    <div class="container hero-top-inner">
+
+        <div>
+            <h1 class="hero-main-title">Wawe<span>MC</span></h1>
+            <p class="hero-sub">Wawe.pl To serwer minecraft !.</p>
+
+            <div class="hero-buttons">
+                <a class="btn-primary">Wawe.pl</a>
+                <a class="btn-secondary" href="https://discord.gg/Z3gjRNSD" target="_blank">DOŁĄCZ</a>
+            </div>
+
+            <div class="hero-ip-copy">
+                Skopiuj adres IP:
+                <button onclick="copyIP()">Kopiuj</button>
+            </div>
+
+            <div class="hero-online">
+                Graczy online: 0
+            </div>
+        </div>
+
+        <div class="hero-right-img">
+            <img src="https://i.pinimg.com/originals/dd/35/dd/dd35dd1efcd851fb479e7179a363915e.gif" alt="Postać">
+        </div>
+
+    </div>
+</section>
+
+<section class="section-discord-modes">
+    <div class="container">
+
+        <div class="discord-card">
+            <div class="discord-left">
+                <img src="https://i.pinimg.com/originals/4b/28/ed/4b28edbea2b2a82bb8b5decd9d5cad36.gif" alt="Skin Discord">
+            </div>
+            <div class="discord-right">
+                <h2>Odwiedź nasz serwer Discord</h2>
+                <p>Aby być ze wszystkim na bieżąco — eventy, aktualizacje, giveaway’e i społeczność WaweMC.</p>
+                <a class="btn-discord" href="https://discord.gg/Z3gjRNSD" target="_blank">Dołącz</a>
+            </div>
+        </div>
+
+        <div class="modes-title">WYBIERZ TRYB ABY PRZEJŚĆ</div>
+
+        <div class="modes-grid">
+            <div class="mode-card">
+                <img src="https://i.pinimg.com/originals/99/b4/89/99b489bbcc6197e031cf92751805f5f2.gif" alt="">
+                <h3>EARTH SMP</h3>
+                <p>Mapa świata, polityka, wojny.</p>
+                <a class="mode-btn" href="#">PRZEJDŹ</a>
+            </div>
+
+            <div class="mode-card">
+                <img src="https://i.pinimg.com/originals/03/9f/e3/039fe37681e50cc7dbe29369cd447b43.gif" alt="">
+                <h3>LIFESTEAL</h3>
+                <p>Kradnij serca, przetrwaj.</p>
+                <a class="mode-btn" href="#">PRZEJDŹ</a>
+            </div>
+
+            <div class="mode-card">
+                <img src="https://i.pinimg.com/originals/00/d4/fa/00d4fa4d0dd818876d77c2067cc8ce4b.gif" alt="">
+                <h3>BOX PVP</h3>
+                <p>Dynamiczne PvP na arenach.</p>
+                <a class="mode-btn" href="#">PRZEJDŹ</a>
+            </div>
+
+            <div class="mode-card">
+                <img src="https://i.pinimg.com/originals/5d/be/92/5dbe921d3e67d4b425bf354203267f76.gif" alt="">
+                <h3>WOJNY GILDII</h3>
+                <p>Twórz gildie i dominuj mapę.</p>
+                <a class="mode-btn" href="#">PRZEJDŹ</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="voucher-section">
+    <div class="container">
+
+        <div class="voucher-card">
+
+            <div class="voucher-left">
+                <img src="https://i.pinimg.com/originals/fd/2c/1a/fd2c1a96b654e220d09525f006482477.gif" alt="Voucher">
+            </div>
+
+            <div class="voucher-right">
+                <h2>ZREALIZUJ VOUCHER</h2>
+                <input type="text" placeholder="NICK Z GRY...">
+                <button>DALEJ</button>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="footer">
+    <div class="container footer-grid">
+
+        <div class="footer-col">
+            <h4>Nawigacja</h4>
+            <a href="#"><span>Strona główna</span></a>
+            <a href="#"><span>Sklep</span></a>
+            <a href="#"><span>Voucher</span></a>
+            <a href="#"><span>Regulamin</span></a>
+        </div>
+
+        <div class="footer-col">
+            <h4>Socialmedia</h4>
+            <a href="#" target="_blank">
+                <span class="social-icon icon-fb">f</span>
+                <span>Facebook</span>
+            </a>
+            <a href="#" target="_blank">
+                <span class="social-icon icon-ig">IG</span>
+                <span>Instagram</span>
+            </a>
+            <a href="https://discord.gg/Z3gjRNSD" target="_blank">
+                <span class="social-icon icon-dc">D</span>
+                <span>Discord</span>
+            </a>
+            <a href="#" target="_blank">
+                <span class="social-icon icon-tt"><span>TT</span></span>
+                <span>TikTok</span>
+            </a>
+        </div>
+
+        <div class="footer-col">
+            <h4>Adres IP</h4>
+
+            <div class="footer-ip-box">
+                <span>Wawe.pl</span>
+            </div>
+
+            <button class="footer-copy-btn" onclick="copyIP()">Kopiuj IP</button>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 WaweMC — wszelkie prawa zastrzeżone
+    </div>
+</section>
+
+<script>
+function copyIP() {
+    navigator.clipboard.writeText("Wawe.pl");
+    alert("Skopiowano IP: Wawe.pl");
+}
+</script>
+
+</body>
+</html>
